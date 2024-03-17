@@ -11,6 +11,16 @@ module "rg" {
 module "dev" {
   source = "../../"
 
+  automanage_configurations = [
+    {
+      rg_name  = module.rg.rg_name
+      location = module.rg.rg_location
+      tags     = module.rg.rg_tags
+      name     = "${var.name}-${random_string.entropy.result}"
+
+    }
+  ]
+
   rg_name  = module.rg.rg_name
   location = module.rg.rg_location
   tags     = module.rg.rg_tags
