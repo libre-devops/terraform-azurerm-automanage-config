@@ -1,5 +1,5 @@
 resource "azurerm_automanage_configuration" "automanage_configs" {
-  for_each                    = {for k, v in var.automanage_configurations : k => v}
+  for_each                    = { for k, v in var.automanage_configurations : k => v }
   name                        = each.value.name
   resource_group_name         = each.value.rg_name
   location                    = each.value.location
